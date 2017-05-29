@@ -1,5 +1,5 @@
 # chrome-ext-jobcan-quick-stamp
-Chrome extension for automated clocking on [JobCan](http://jobcan.ne.jp/) (unofficial). Forked from mugifly's [Quick Stamp](https://github.com/mugifly/chrome-ext-jobcan-quick-stamp) to add automatic functionality.
+Chrome extension for automated clocking on [JobCan](http://jobcan.ne.jp/) (unofficial). Based on mugifly's [Quick Stamp](https://github.com/mugifly/chrome-ext-jobcan-quick-stamp) to add automatic functionality.
 
 ![Screen shot](https://raw.githubusercontent.com/spaceraccoon/jobcan-automatic-clock-chrome-extension/master/images/screenshot.png)
 
@@ -9,8 +9,7 @@ We doesn't have relationship with the company of [JobCan](http://jobcan.ne.jp/).
 
 ## Get Started
 
-Now available on Chrome Web Store:
-https://chrome.google.com/webstore/detail/jobcan-quick-stamp/ingjjkkmmncicomnmhgglninohhiccdo
+Now available on [Chrome Web Store](https://chrome.google.com/webstore/detail/jobcan-automatic-clock/icbfmbdbjohkglogkkkjnopkpjfobehb)
 
 ## Development
 
