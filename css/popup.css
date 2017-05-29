@@ -1,0 +1,21 @@
+body {
+	min-width: 300px;
+}
+
+div label {
+	display: block;
+	font-size: 10pt;
+	font-weight: bolder;
+	margin-bottom: 0.2rem;
+}
+
+.container {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+#currentTime {
+	width: 100%;
+	font-size: 20pt;
+	text-align: center;
+}

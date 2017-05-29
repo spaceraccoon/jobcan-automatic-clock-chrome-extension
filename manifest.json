@@ -1,0 +1,33 @@
+{
+	"manifest_version": 2,
+	"name": "JobCan Automatic Clock",
+	"version": "1.0.0",
+	"description": "Chrome extension for automatic clocking on JobCan (unofficial)",
+	"browser_action": {
+		"default_popup": "html/popup.html"
+	},
+	"background": {
+		"scripts": [
+			"node_modules/jquery/dist/jquery.min.js",
+			"models/stamp-status-checker.js",
+			"models/locator.js",
+			"models/stamper.js",
+			"js/background.js"
+		]
+	},
+	"options_page": "html/options.html",
+	"permissions": [
+		"http://jobcan.jp/m/*",
+		"https://ssl.jobcan.jp/m/*",
+		"storage",
+		"geolocation",
+		"background",
+		"tabs",
+		"activeTab",
+		"alarms"
+	],
+	"icons": {
+		"128": "images/icon.png"
+	},
+	"homepage_url": "https://github.com/spaceraccoon/jobcan-automatic-clock-chrome-extension"
+}

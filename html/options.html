@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+
+        <script src="../models/locator.js"></script>
+        <script src="../models/stamper.js"></script>
+        <script src="../models/stamp-status-checker.js"></script>
+        <link rel="stylesheet" href="../css/options.css" />
+    </head>
+    <body>
+        <div class="container options">
+            
+            <div class="page-header">
+                <h1>JobCan Automatic Clock</h1>
+            </div>
+            <h2>オプションページ</h2>
+            <div id="alert" role="alert"></div>
+            <div class="col-sm-6">
+                <div id="options-area">
+                    <label for="company-id">会社ID</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="url-prefix">http://jobcan.jp/m?code=</span>
+                        <input type="text" class="form-control" id="company-id" aria-describedby="url-prefix">
+                    </div>
+                    <br/>
+                    <label for="group">グループ (オフィス):</label>
+                    <div class="input-group">
+                        <select class="form-control" id="group"></select>
+                    </div>
+                    <br/>
+                    <label for="out-time">時間内の自動時計</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="in-time-prefix">
+                            <input class="form-check-input" type="checkbox" id="activate-in-time">
+                        </span>
+                        <input type="time" class="form-control" id="in-time" aria-describedby="activate-in-time">
+                    </div>
+                    <br/>
+                    <label for="out-time">自動クロックアウト時間</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="out-time-prefix">
+                            <input class="form-check-input" type="checkbox" id="activate-out-time">
+                        </span>
+                        <input type="time" class="form-control" id="out-time" aria-describedby="activate-out-time">
+                    </div>
+                    <br/>
+                    <button id="save-options-button" class="btn btn-success">設定を保存する</button>
+                </div>
+            </div>
+        </div>
+        <script src="../js/options.js"></script>
+    </body>
+</html>

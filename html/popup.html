@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+
+		<!-- Scripts -->
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../models/stamper.js"></script>
+		<script src="../models/locator.js"></script>
+		<script src="../models/stamp-status-checker.js"></script>
+		<script src="../js/popup.js"></script>
+		
+		<!-- Cascading Style Sheets -->
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="../css/popup.css"></link>
+	</head>
+	
+	<body>
+		<div class="container">
+			<div id="notice">Now loading...</div>
+  			<form id="stampForm" style="display: hide;">
+  				<p id="currentTime"></p>
+				<div class="row">
+					<label for="group">グループ (オフィス):</label>
+					<select class="form-control" id="group"></select>
+				</div>
+				<div class="row">
+					<label for="note">備考:</label>
+					<textarea class="form-control" id="note" rows="3"></textarea>
+				</div>
+				<div class="row">
+					<label for="currentLocation">現在地:</label>
+					<p id="currentLocation"></p>
+				</div>
+
+				<div class="row">
+		        	<label class="form-check-label">
+		        		<input class="form-check-input" type="checkbox" id="remGroupWithLocation"> 位置情報に基づくグループの自動選択
+		        	</label>
+				</div>
+			    <div class="row">
+			    	<div id="alert" role="alert"></div>
+			    	<input type="submit" id="submitBtn" class="btn btn-primary btn-lg btn-block" value="打刻">
+			    </div>
+			</form>
+		</div>
+	</body>
+</html>

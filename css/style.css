@@ -1,0 +1,62 @@
+/* Page */
+
+html {
+	margin: 0 0 0 0;
+}
+
+body {
+	background-color: #fefefe;
+	color: #202020;
+	margin: 2rem;
+	font-size: 12pt;
+}
+
+h2, h3, h4 {
+	margin-left: 1rem;
+}
+
+p {
+	margin-left: 1.5rem;
+}
+
+p.small {
+	font-size: 10pt;
+}
+
+hr {
+	border: 0.5px solid #e0e0e0;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+/* Submit button */
+
+input[type="submit"] {
+	background-color: #3498db;
+	border: none;
+	color: #fefefe;
+	font-weight: bolder;
+	font-size: 13pt;
+	padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+input[type="submit"]:hover {
+	cursor: pointer;
+	border: none;
+	background-color: #2980b9;
+}
+
+/* Result information */
+
+#result {
+	font-weight: bolder;
+	margin-right: 2rem;
+}
+
+#result.success {
+	color: green;
+}
+
+#result.error {
+	color: red;
+}
