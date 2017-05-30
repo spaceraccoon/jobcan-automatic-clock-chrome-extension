@@ -16,11 +16,10 @@ Now available on [Chrome Web Store](https://chrome.google.com/webstore/detail/jo
 Required: Git, Node.js
 
 ```
-$ git clone https://github.com/mugifly/chrome-ext-jobcan-quick-stamp.git
-$ cd chrome-ext-jobcan-quick-stamp/
+$ git clone https://github.com/spaceraccoon/jobcan-automatic-clock-chrome-extension.git
+$ cd jobcan-automatic-clock-chrome-extension
 $ npm install
 
-$ npm test
 ```
 
 Then, please execute the following in your Google Chrome or Chromium browser.
