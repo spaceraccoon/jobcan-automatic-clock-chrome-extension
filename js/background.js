@@ -168,6 +168,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	} else if (request.evt == 'ON_STAMPED') {
 		updateBadgeStatus();
 		sendResponse({evt: request.evt, result: 'OKAY'});
+	} else if (request.evt == 'LOGGED_OUT') {
+		updateBadgeStatus();
+		sendResponse({evt: request.evt, result: 'OKAY'});
 	} else {
 		return;
 	}

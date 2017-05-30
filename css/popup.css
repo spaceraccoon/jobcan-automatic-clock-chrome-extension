@@ -19,3 +19,11 @@ div label {
 	font-size: 20pt;
 	text-align: center;
 }
+
+#submitBtn {
+	margin: 5px;
+}
+
+#errBtn {
+	margin: 5px;
+}

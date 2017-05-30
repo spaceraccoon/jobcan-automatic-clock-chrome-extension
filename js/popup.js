@@ -24,7 +24,7 @@ $(function() {
 	 */
 	var init = function () {
 
-		isLoading = true;
+		// isLoading = false;
 
 		chrome.storage.sync.get(function(options) {
 			var code = options.companyId || null;
@@ -35,8 +35,13 @@ $(function() {
 			// Fetch the current working status
 			status_checker.fetchStartDate(function (err, start_date) {
 				if (err) {
-					console.log('found error');
-					$('#notice').html('<a href="https://ssl.jobcan.jp/login/pc-employee/" class="btn btn-primary btn-lg btn-block" target="_blank">ログインしてください');
+					$('#notice').html('<a href="https://ssl.jobcan.jp/login/pc-employee/" id="errBtn" class="btn btn-primary btn-lg btn-block" target="_blank">ログインしてください');
+					isLoading = true;
+					chrome.runtime.sendMessage({
+						evt: 'LOGGED_OUT'
+					}, function(response) {
+						console.log(response.result);
+					});
 					return;					
 				}
 				if (start_date != null) {
@@ -48,11 +53,11 @@ $(function() {
 					$('#submitBtn').removeClass('btn-danger');
 					$('#submitBtn').addClass('btn-primary');
 				}
-
 			});
+			
 
 			if (code == null) {
-				$('#notice').html('で設定を完了して下さい<a href="options.html" class="btn btn-primary btn-lg btn-block" target="_blank">オプションページ</a>');
+				$('#notice').html('で設定を完了して下さい<a href="options.html" id="errBtn" class="btn btn-primary btn-lg btn-block" target="_blank">オプションページ</a>');
 				return;
 			}
 

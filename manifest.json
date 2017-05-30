@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "JobCan Automatic Clock",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Chrome extension for automatic clocking on JobCan (unofficial)",
 	"browser_action": {
 		"default_popup": "html/popup.html"
@@ -22,8 +22,6 @@
 		"storage",
 		"geolocation",
 		"background",
-		"tabs",
-		"activeTab",
 		"alarms",
 		"notifications"
 	],
