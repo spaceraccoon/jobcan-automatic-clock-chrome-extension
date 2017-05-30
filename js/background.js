@@ -243,6 +243,5 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 	});
 });
 
-updateBadgeStatus();
-window.setInterval(updateBadgeStatus, UPDATE_INTERVAL);
 init();
+window.setInterval(updateBadgeStatus, UPDATE_INTERVAL);
