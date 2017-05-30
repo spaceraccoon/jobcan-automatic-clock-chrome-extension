@@ -24,9 +24,11 @@ Stamper.prototype.fetchGroups = function (callback) {
 		success: function (data, data_type) {
 
 			var parsed_data = self._parseAccessRecordPage(data);
-			console.log('fetchGroups', parsed_data.groups);
-			callback(null, parsed_data.groups);
-
+			if (parsed_data == null) {
+				callback('Could not get your status');
+			} else {
+				callback(null, parsed_data.groups);
+			}
 		},
 		error: function (req, status, err) {
 
@@ -92,7 +94,8 @@ Stamper.prototype.sendStamp = function (group_id, lat, lng, opt_note, callback) 
 };
 
 Stamper.prototype._parseAccessRecordPage = function(html) {
-
+	if (html.match(/認証エラー/)) return null;
+	
 	var $page = $($.parseHTML(html, document, false));
 
 	// Get the groups

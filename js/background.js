@@ -5,6 +5,39 @@
 var stamper = null;
 var UPDATE_INTERVAL = 60000; // 60 sec.
 
+function init() {
+	chrome.storage.sync.get(function(options) {
+		if (options.companyId == null) {
+			chrome.browserAction.setTitle({
+				title: 'Jobcan Quick Stamp\n[Error] No options set.'
+			});
+			chrome.browserAction.setBadgeText({
+				text: 'ERR'
+			});
+			chrome.browserAction.setBadgeBackgroundColor({
+				color: '#ff0000'
+			});
+			return;
+		}
+		updateBadgeStatus();
+		if (options.activateIn) {
+			console.log("creating inAlarm");
+			var timeToFire = calculateTime(options.inTime, sendResponse);
+			var alarmPeriod = 60 * 24; // Minutes / day
+    		var alarmInfo = { when: timeToFire, periodInMinutes: alarmPeriod};
+    		var inAlarm = chrome.alarms.create('inAlarm', alarmInfo);
+		}
+		if (options.activateOut) {
+			console.log("creating outAlarm");
+			var timeToFire = calculateTime(options.outTime, sendResponse);
+			var alarmPeriod = 60 * 24; // Minutes / day
+    		var alarmInfo = { when: timeToFire, periodInMinutes: alarmPeriod};
+    		var outAlarm = chrome.alarms.create('outAlarm', alarmInfo);
+		}
+	});
+	return;
+}
+
 function calculateTime(time, sendResponse) {
 	var dateToFire = new Date();
 	var desiredHour = "0";
@@ -166,7 +199,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 			status_checker.fetchStartDate(function (err, start_date) {
 				if (start_date != null) {
 					if (alarm.name == 'outAlarm') {
-						stamper.sendStamp(group_id, currLocation.lat, currLocation.lng, $('#note').val(), function (err) {
+						stamper.sendStamp(group_id, currLocation.lat, currLocation.lng, '', function (err) {
 							if (err) {
 								console.log("Error clocking out");
 								return;
@@ -212,3 +245,4 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 
 updateBadgeStatus();
 window.setInterval(updateBadgeStatus, UPDATE_INTERVAL);
+init();

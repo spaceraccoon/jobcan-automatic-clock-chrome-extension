@@ -115,10 +115,14 @@ function load_groups () {
 	var stamper = new Stamper(company_id);
 	var init_group_id = null;
 	
-	$('#group').prop('disabled', false);
 	if (!has_group_id) {
 		$('#group').empty();
 		stamper.fetchGroups(function (err, groups) {
+			if (err) {
+				console.log('err');
+				$alert.addClass('alert alert-danger');
+				$alert.html('<a href="https://ssl.jobcan.jp/login/pc-employee/">ログインしてください');
+			}
 			if (groups) {
 				for (var group_id in groups) {
 					var $opt = $('<option/>');
@@ -128,6 +132,7 @@ function load_groups () {
 				}
 			}
 		});
+		$('#group').prop('disabled', false);
 		has_group_id = true;
 	}
 	$('#save-options-button').prop('disabled', false);

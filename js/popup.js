@@ -35,6 +35,7 @@ $(function() {
 			// Fetch the current working status
 			status_checker.fetchStartDate(function (err, start_date) {
 				if (err) {
+					console.log('found error');
 					$('#notice').html('<a href="https://ssl.jobcan.jp/login/pc-employee/" class="btn btn-primary btn-lg btn-block" target="_blank">ログインしてください');
 					return;					
 				}

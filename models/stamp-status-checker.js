@@ -15,7 +15,6 @@ StampStatusChecker.prototype.fetchStartDate = function (callback) {
 		url: self.url,
 		timeout: 5000,
 		success: function (data, status) {
-
 			var last_stamp_status = self._parseLastStampStatus(data);
 			if (last_stamp_status == null) {
 				callback('Could not get your status');
@@ -24,7 +23,6 @@ StampStatusChecker.prototype.fetchStartDate = function (callback) {
 			} else {
 				callback(null, null);
 			}
-
 		},
 		error: function (req, status, err) {
 			callback(err, null);
@@ -44,25 +42,19 @@ StampStatusChecker.prototype._parseLastStampStatus = function(html) {
 	var $adits = $($tables[$tables.length - 1]).find('tr');
 
 	if ($adits.length == 0) {
-		return {
-			text: status_text,
-			date: start_date
-		};
+		return null;
 	}
 	
 	// Loop until valid status, accounting for revisions
 	var i = 1;
-	var $item = null;
-	var $columns = null;
 	var status_text = '-';
-
 	while (status_text == '-') {
-		i++;
-		$item = $($adits[$adits.length - i]);
-		$columns = $item.find('td');
+		var $item = $($adits[$adits.length - i]);
+		var $columns = $item.find('td');
 		status_text = $($columns[0]).text().replace(new RegExp('[\f\n\r\t\v ]', 'g'), '');
+		i++;
 	}
-
+	
 	// Get a date
 	var start_date = null, now = new Date();
 	var status_time_str = $($columns[2]).text().replace(new RegExp('[\f\n\r\t\v ]', 'g'), '');

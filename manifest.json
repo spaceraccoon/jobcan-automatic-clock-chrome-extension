@@ -24,7 +24,8 @@
 		"background",
 		"tabs",
 		"activeTab",
-		"alarms"
+		"alarms",
+		"notifications"
 	],
 	"icons": {
 		"128": "images/icon.png"
