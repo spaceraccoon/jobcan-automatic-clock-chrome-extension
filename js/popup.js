@@ -4,10 +4,6 @@
 
 'use strict';
 
-// Declaration for allow the global objects in ESLint
-/*global chrome, Stamper, StampStatusChecker*/
-
-
 $(function() {
 
 	// Loading flag
@@ -17,7 +13,9 @@ $(function() {
 	var stamper = null;
 
 	// Get a location
-	var location = null;
+	var currLocation = null;
+	
+	var code = null;
 
 	/**
 	 * Initialize
@@ -27,7 +25,7 @@ $(function() {
 		// isLoading = false;
 
 		chrome.storage.sync.get(function(options) {
-			var code = options.companyId || null;
+			code = options.companyId || null;
 			
 			// Initialize the checker
 			var status_checker = new StampStatusChecker(code);
@@ -64,7 +62,6 @@ $(function() {
 			isLoading = false;
 
 			// Get a current location
-			var currLocation = null;
 			var locator = new Locator();
 			locator.fetchLocation(function (err, fetched_location) {
 				if (err) {
@@ -177,6 +174,7 @@ $(function() {
 	var sendStamp = function() {
 
 		var group_id = parseInt($('#group').val());
+		console.log('group: ' + group_id);
 
 		$('#submitBtn').prop('disabled', true);
 		$('#submitBtn').val('Sending...');
@@ -210,12 +208,13 @@ $(function() {
 
 			});
 		}
+		console.log('location lat: ' + currLocation.lat);
+		console.log('location lng: ' + currLocation.lng);
+		console.log('location lng: ' + currLocation.lng);
 
 		// Send a stamp
-		stamper.sendStamp(group_id, location.lat, location.lng, $('#note').val(), function (err) {
-
-			$('#submitBtn').prop('disabled', false);
-
+		
+		stamper.sendStamp(group_id, currLocation.lat, currLocation.lng, $('#note').val(), function (err) {
 			if (err) {
 				// Solution from StackOverflow to strip HTML tags
 				$('#submitBtn').val('再送信');
@@ -247,7 +246,7 @@ $(function() {
 				$('#submitBtn').prop('disabled', false);
 				init();
 
-			}, 3000);
+			}, 1000);
 
 		});
 
