@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "ジョブカン自動クロック",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "ジョブカンでの自動クロッキングのChrome拡張機能（非公式）。", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}

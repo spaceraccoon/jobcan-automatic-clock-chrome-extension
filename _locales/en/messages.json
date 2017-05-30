@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "JobCan Automatic Clock",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Chrome extension for automatic clocking on JobCan (unofficial).", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}
