@@ -42,7 +42,10 @@ StampStatusChecker.prototype._parseLastStampStatus = function(html) {
 	var $adits = $($tables[$tables.length - 1]).find('tr');
 
 	if ($adits.length == 0) {
-		return null;
+		return {
+			text: status_text,
+			date: start_date
+		};
 	}
 	
 	// Loop until valid status, accounting for revisions
