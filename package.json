@@ -1,6 +1,6 @@
 {
   "name": "jobcan-automatic-clock-chrome-extension",
-  "version": "1.0.2",
+  "version": "1.0.9",
   "description": "Chrome extension for quick clocking on JobCan (unofficial)",
   "main": "background.js",
   "author": "Eugene Lim",

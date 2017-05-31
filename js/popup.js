@@ -208,10 +208,7 @@ $(function() {
 
 			});
 		}
-		console.log('location lat: ' + currLocation.lat);
-		console.log('location lng: ' + currLocation.lng);
-		console.log('location lng: ' + currLocation.lng);
-
+		
 		// Send a stamp
 		
 		stamper.sendStamp(group_id, currLocation.lat, currLocation.lng, $('#note').val(), function (err) {

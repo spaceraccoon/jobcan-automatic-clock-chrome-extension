@@ -185,13 +185,13 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 			var company_id = options.companyId;
 			var group_id = options.groupId;
 			stamper = new Stamper(company_id);
-			console.log("Alarmed");
 			var status_checker = new StampStatusChecker(company_id);
 			var currLocation = null;
 			var locator = new Locator();
 			locator.fetchLocation(function (err, fetched_location) {
 				if (err) {
 					console.log('Failed to get location.');
+					currLocation = {};
 				} else {
 					currLocation = fetched_location;
 				}
