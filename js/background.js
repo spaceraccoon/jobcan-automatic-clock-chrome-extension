@@ -22,14 +22,14 @@ function init() {
 		updateBadgeStatus();
 		if (options.activateIn) {
 			console.log("creating inAlarm");
-			var timeToFire = calculateTime(options.inTime, sendResponse);
+			var timeToFire = calculateTime(options.inTime);
 			var alarmPeriod = 60 * 24; // Minutes / day
     		var alarmInfo = { when: timeToFire, periodInMinutes: alarmPeriod};
     		var inAlarm = chrome.alarms.create('inAlarm', alarmInfo);
 		}
 		if (options.activateOut) {
 			console.log("creating outAlarm");
-			var timeToFire = calculateTime(options.outTime, sendResponse);
+			var timeToFire = calculateTime(options.outTime);
 			var alarmPeriod = 60 * 24; // Minutes / day
     		var alarmInfo = { when: timeToFire, periodInMinutes: alarmPeriod};
     		var outAlarm = chrome.alarms.create('outAlarm', alarmInfo);
