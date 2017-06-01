@@ -207,15 +207,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 								console.log("Error clocking out");
 								return;
 							}
-
-							// Notify to background.js
-							window.setTimeout(function () {
-								chrome.runtime.sendMessage({
-									evt: 'ON_STAMPED'
-								}, function(response) {
-									console.log(response.result);
-								});
-							});
+							updateBadgeStatus();
 						});
 					} else {
 						console.log("Already clocked in");
@@ -227,15 +219,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 								console.log("Error clocking in");
 								return;
 							}
-
-							// Notify to background.js
-							window.setTimeout(function () {
-								chrome.runtime.sendMessage({
-									evt: 'ON_STAMPED'
-								}, function(response) {
-									console.log(response.result);
-								});
-							});
+						updateBadgeStatus();
 						});
 					} else {
 						console.log("Already clocked out");
