@@ -35,6 +35,28 @@ function init() {
     		var outAlarm = chrome.alarms.create('outAlarm', alarmInfo);
 		}
 	});
+	locator.fetchLocation(function (err, fetched_location) {
+		if (err) {
+			console.log('Failed to get location.');
+			var null_location  = {
+					lat: 0.0000000,
+					lng: 0.0000000
+			};
+			chrome.storage.sync.set({
+				lastLocation: null_location,
+			}, function() {
+				console.log('Saved null location.');
+			});
+		} else {
+			currLocation = fetched_location;
+			chrome.storage.sync.set({
+				lastLocation: fetched_location,
+			}, function() {
+				console.log('Saved last location.');
+			});
+	
+		}
+	});
 	return;
 }
 
@@ -191,9 +213,17 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 			locator.fetchLocation(function (err, fetched_location) {
 				if (err) {
 					console.log('Failed to get location.');
-					currLocation = {};
+					chrome.storage.sync.get('lastLocation', function (saved_value) {
+						currLocation = lastLocation;
+					});
 				} else {
 					currLocation = fetched_location;
+					chrome.storage.sync.set({
+						lastLocation: fetched_location,
+					}, function() {
+						console.log('Saved last location.');
+					});
+
 				}
 			});
 
