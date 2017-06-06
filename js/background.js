@@ -35,6 +35,7 @@ function init() {
     		var outAlarm = chrome.alarms.create('outAlarm', alarmInfo);
 		}
 	});
+	var locator = new Locator();
 	locator.fetchLocation(function (err, fetched_location) {
 		if (err) {
 			console.log('Failed to get location.');
